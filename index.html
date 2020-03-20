@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="./js/script.js"></script>
     <title>UI Pattern</title>
 </head>
-<body>
-    <div class="title"></div>
-    <div class="content"></div>
+<body onload="init()">
+    <header class="header">
+        <p class="news_header">Top headlines in the US</p>
+    </header>
+    <main class="main">
+        <div class="news_main">
+            <div class="news_main_left">
+                <div class="goPrevious triangle_left" data-direction="-1"></div>
+            </div>
+            <div class="news_main_middle">
+                <h2 class="news_title">title</h2>
+                <div class="news_author_publishedDate">
+                    <span class="news_author">author</span>
+                    <span class="news_publishedDate">publishedDate</span>
+                </div>
+                <h6 class="news_source_url">Source:<a class="news_source" href="" target="_blank"></a></h6>
+                <div class="news_image"></div>
+                <p class="news_content">content</p>
+            </div>
+            <div class="news_main_right">
+                <div class="goNext triangle_right" data-direction="1"></div>
+            </div>
+        </div>
+    </main>
+    <script src="./js/script.js"></script>
 </body>
 </html>
