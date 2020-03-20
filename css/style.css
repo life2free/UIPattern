@@ -1,0 +1,24 @@
+* {
+    border: 1px solid red;
+    box-sizing: border-box;
+    font: normal 100% Helvetica, 'Rubik', sans-serif;
+}
+
+
+body{
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+}
+
+.title{
+    margin: 0;
+    height: 2vh;
+    background-color: whitesmoke;
+}
+
+.content{
+    margin: 1% 0;
+    height: 94vh;
+    background-color: whitesmoke;
+}
