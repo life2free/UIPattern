@@ -20,7 +20,7 @@ Combine the UI Pattern and API. The data to populate the UI Pattern comeS from t
 
 The UI Pattern used in this project is Slider Pattern. The user will see the content on the screen with 'Next' and 'Previous' buttons. When they click on the 'Next' button, the slider will shift to show the next item in the list. When the user clicks on the 'Previous' button, the slider will shift to show the previous items in the list. If there is no next or previous items, the slider will loop to the other end of the list.
 
-![slider](https://github.com/life2free/UIPattern/tree/master/img/slider.gif)
+![slider](https://github.com/life2free/UIPattern/blob/master/img/slider.gif)
 
 ### API
 
