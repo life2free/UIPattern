@@ -8,13 +8,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/mediaqueries.css" />
     <title>UI Pattern</title>
   </head>
   <body onload="init()">
     <header class="header">
       <div
         id="queryNewsApi"
-        class="news_header"
+        class="font_14 news_header"
         onclick="displayDatas(this)"
         data-apiindex="0"
         data-querytime="0"
@@ -23,7 +24,7 @@
       </div>
       <div
         id="queryNytApi"
-        class="news_header"
+        class="font_14 news_header"
         onclick="displayDatas(this)"
         data-apiindex="1"
         data-querytime="0"
@@ -37,8 +38,8 @@
           <div class="goPrevious triangle_left" data-direction="-1"></div>
         </div>
         <div class="news_main_middle">
-          <h2 class="news_title">title</h2>
-          <div class="news_author_publishedDate">
+          <h2 class="font_18 news_title">title</h2>
+          <div class="font_12 news_author_publishedDate">
             <span class="news_author">author</span>
             <span class="news_publishedDate">publishedDate</span>
           </div>
@@ -46,7 +47,7 @@
             Source:<a class="news_source" href="" target="_blank"></a>
           </h6>
           <div class="news_image"></div>
-          <p class="news_content">content</p>
+          <p class="font_16 news_content">content</p>
         </div>
         <div class="news_main_right">
           <div class="goNext triangle_right" data-direction="1"></div>

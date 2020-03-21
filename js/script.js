@@ -57,7 +57,6 @@ class News {
 
 // get news list by news api and renders the page
 function getNewsListFromNewsApi() {
-  console.log("getNewsListFromNewsApi");
   fetch(`${newsApiUrl}`, {
     headers: {
       "X-Api-Key": "94c943336a554a92a9fd546cdef192fa"
