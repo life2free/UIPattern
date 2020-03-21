@@ -21,12 +21,18 @@ body {
 }
 
 .news_header {
-  margin: 1% 5%;
+  margin: 1% 4%;
   padding: 0;
   font-size: 15px;
   color: #e0e0e0;
   border: 1px solid rgba(60, 60, 60, 0);
-  /* width: 5%; */
+  border-radius: 2px;
+  width: 6%;
+  text-align: center;
+}
+
+.click_style {
+  background: #4e7ca0;
 }
 
 .main {

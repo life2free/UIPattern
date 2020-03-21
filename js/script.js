@@ -18,7 +18,8 @@ const queryNewsApiEle = document.querySelector("#queryNewsApi");
 const queryNytApiEle = document.querySelector("#queryNytApi");
 
 /** the interval of query, unit is millisecond, 60000 millisecond=60 seconds
- * purpose: some datas from api are updated infrequently, so don't need query data from api each time when diplay datas
+ * purpose: the datas from api are updated infrequently, meanwhile，the amount of datas which are got from api is huge
+ * so don't need query data from api each time when diplay datas
  * if interval is less than this value, then don't need query datas with api, otherwise, query datas with api
  */
 const queryInterval = 60000;
@@ -274,6 +275,7 @@ function renderNewsDiv(newsIdx) {
 function init() {
   getNewsListFromNewsApi();
   queryNewsApiEle.dataset.querytime = new Date().getTime();
+  queryNewsApiEle.classList.add("click_style");
 }
 
 // handle the go Previous or go Next
@@ -315,8 +317,12 @@ function displayDatas(obj) {
      */
     if (apiIndex == "0") {
       renderList = [...newsListParsed];
+      queryNewsApiEle.classList.add("click_style");
+      queryNytApiEle.classList.remove("click_style");
     } else {
       renderList = [...nytListParsed];
+      queryNewsApiEle.classList.remove("click_style");
+      queryNytApiEle.classList.add("click_style");
     }
 
     newsCount = renderList.length;
@@ -329,10 +335,14 @@ function displayDatas(obj) {
     if (apiIndex == "0") {
       // get news list by News api
       getNewsListFromNewsApi();
+      queryNewsApiEle.classList.add("click_style");
+      queryNytApiEle.classList.remove("click_style");
       queryNewsApiEle.dataset.querytime = new Date().getTime();
     } else {
       // get news list by News York Times api
       getNewsListFromNytApi();
+      queryNewsApiEle.classList.remove("click_style");
+      queryNytApiEle.classList.add("click_style");
       queryNytApiEle.dataset.querytime = new Date().getTime();
     }
   }
