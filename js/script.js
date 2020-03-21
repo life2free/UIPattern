@@ -1,4 +1,4 @@
-const newsApiUrl = "http://newsapi.org/v2/top-headlines?country=us";
+const newsApiUrl = "https://newsapi.org/v2/top-headlines?country=us";
 const nytApiUrl =
   "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=financial&sort=newest&api-key=pQ4BKb1jHvw1WlQ1UaxGHFDfftLosi8D";
 const nytImageBasePath = "https://www.nytimes.com/";
