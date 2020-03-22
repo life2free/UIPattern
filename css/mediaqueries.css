@@ -176,7 +176,7 @@
   }
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 375px) {
   .news_main {
     margin: 7% 9% 10% 9%;
   }

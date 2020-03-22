@@ -64,8 +64,16 @@ function getNewsListFromNewsApi() {
   })
     .then(res => res.json())
     .then(res => {
+      newsList = [];
       if (res.articles.length > 0) {
-        newsList = [...res.articles];
+        for (let i = 0; i < res.articles.length; i++) {
+          // just get the news which includes image
+          let urlToImage = res.articles[i].urlToImage;
+          if (urlToImage != null && urlToImage != "") {
+            newsList.push(res.articles[i]);
+          }
+        }
+        // newsList = [...res.articles];
         newsCount =
           newsList.length > maxDisplayCount ? maxDisplayCount : newsList.length;
         // parse the original news list
