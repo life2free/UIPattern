@@ -18,25 +18,25 @@ const queryNewsApiEle = document.querySelector("#queryNewsApi");
 const queryNytApiEle = document.querySelector("#queryNytApi");
 
 /** the interval of query, unit is millisecond, 60000 millisecond=60 seconds
- * purpose: the datas from api are updated infrequently, meanwhile，the amount of datas which are got from api is huge
- * so don't need query data from api each time when diplay datas
- * if interval is less than this value, then don't need query datas with api, otherwise, query datas with api
+ * purpose: the data from api are updated infrequently, meanwhile，the amount of data which are got from api is huge
+ * so don't need query data from api each time when diplay data
+ * if interval is less than this value, then don't need query data with api, otherwise, query data with api
  */
 const queryInterval = 60000;
 
 // store the original data list which queried by api
 let newsList = [];
 
-// store the parsed data list which original datas came from news api
+// store the parsed data list which original data came from news api
 let newsListParsed = [];
 
-// store the parsed data list which original datas came from new york times api
+// store the parsed data list which original data came from new york times api
 let nytListParsed = [];
 
 /**
  * store the data list for render the page
- * when display the datas from news api, renderList copy the datas of newsListParsed
- * when display the datas from new york time api, renderList copy the datas of nytListParsed
+ * when display the data from news api, renderList copy the data of newsListParsed
+ * when display the data from new york time api, renderList copy the data of nytListParsed
  */
 let renderList = [];
 let newsIndex = 0;
@@ -247,7 +247,9 @@ function renderNewsDiv(newsIdx) {
     // render the title,author,publishedDate,image,content,source,url to page
     newsTitleEle.innerHTML = news.title;
     if (news.author != "") {
-      newsAuthorEle.innerHTML = "By ".concat(news.author);
+      newsAuthorEle.innerHTML = news.author;
+      // to filter out the a tag, some author infos from original data contains a tag
+      newsAuthorEle.innerText = newsAuthorEle.innerText;
     } else {
       newsAuthorEle.innerHTML = "";
     }
@@ -302,8 +304,8 @@ function goPreviousOrNextHandle(e) {
 goPreviousBtn.addEventListener("click", goPreviousOrNextHandle);
 goNextBtn.addEventListener("click", goPreviousOrNextHandle);
 
-// display datas
-function displayDatas(obj) {
+// display data
+function displayData(obj) {
   let apiIndex = obj.dataset.apiindex;
   newsIndex = 0;
   let lastQueryTime =
@@ -312,7 +314,7 @@ function displayDatas(obj) {
   if (interval <= queryInterval) {
     /**
      * if the spacing interval between current time and last time when queried data is less than the queryInterval,
-     * then don't need query datas with api, just use the datas last time queried
+     * then don't need query data with api, just use the data last time queried
      */
     if (apiIndex == "0") {
       renderList = [...newsListParsed];
@@ -329,7 +331,7 @@ function displayDatas(obj) {
   } else {
     /**
      * if the spacing interval between current time and last time when queried data is great than the queryInterval,
-     * then need query datas with api
+     * then need query data with api
      */
     if (apiIndex == "0") {
       // get news list by News api
