@@ -312,11 +312,12 @@ goPreviousBtn.addEventListener("click", goPreviousOrNextHandle);
 goNextBtn.addEventListener("click", goPreviousOrNextHandle);
 
 // display data
-function displayData(obj) {
-  let apiIndex = obj.dataset.apiindex;
+function displayData(e) {
+  e.preventDefault();
+  let apiIndex = e.target.dataset.apiindex;
   newsIndex = 0;
   let lastQueryTime =
-    obj.dataset.querytime != "" ? parseInt(obj.dataset.querytime) : 0;
+    e.target.dataset.querytime != "" ? parseInt(e.target.dataset.querytime) : 0;
   let interval = new Date().getTime() - lastQueryTime;
   if (interval <= queryInterval) {
     /**
@@ -355,3 +356,7 @@ function displayData(obj) {
     }
   }
 }
+
+queryNewsApiEle.addEventListener("click", displayData);
+queryNytApiEle.addEventListener("click", displayData);
+window.onload = init;
