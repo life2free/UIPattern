@@ -73,7 +73,6 @@ function getNewsListFromNewsApi() {
             newsList.push(res.articles[i]);
           }
         }
-        // newsList = [...res.articles];
         newsCount =
           newsList.length > maxDisplayCount ? maxDisplayCount : newsList.length;
         // parse the original news list
