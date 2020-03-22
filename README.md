@@ -36,7 +36,7 @@ Get the news data according to the relevant conditions by the New York Times API
 
 ### 3. Control the frequency of query data requests
 
-The data from api are updated infrequently, meanwhile，the amount of data which are got from api is huge. So it's unnecessary to query data from api each time when the user needs some data presented. Achieve this through a value of spacing interval. If interval is less than this value, the program will present the data which were got from api last time instead of query data with api. Otherwise, query data with api.
+The data from api are updated infrequently, meanwhile, the amount of data which are got from api is huge. So it's unnecessary to query data from api each time when the user needs some data presented. Achieve this through a value of spacing interval. If interval between current time and the time of the last request for data with api is less than this value, the program will present the data which were got from api last time instead of querying data with api. Otherwise, query data with api.
 
 ### 4. Apply media queries
 
