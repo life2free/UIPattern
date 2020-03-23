@@ -1,6 +1,6 @@
 const newsApiUrl = "https://newsapi.org/v2/top-headlines?country=us";
 const nytApiUrl =
-  "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=financial&sort=newest&api-key=pQ4BKb1jHvw1WlQ1UaxGHFDfftLosi8D";
+  "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=trump&sort=newest&api-key=pQ4BKb1jHvw1WlQ1UaxGHFDfftLosi8D";
 const nytImageBasePath = "https://www.nytimes.com/";
 
 const maxDisplayCount = 10;
@@ -160,13 +160,13 @@ function getNewsListFromNytApi() {
     .then(res => {
       newsList = [];
       if (res.response.docs.length > 0) {
-        for (let i = 0; i < res.response.docs.length; i++) {
-          // just get the news which includes image
-          if (res.response.docs[i].multimedia.length > 0) {
-            newsList.push(res.response.docs[i]);
-          }
-        }
-
+        // for (let i = 0; i < res.response.docs.length; i++) {
+        //   // just get the news which includes image
+        //   if (res.response.docs[i].multimedia.length > 0) {
+        //     newsList.push(res.response.docs[i]);
+        //   }
+        // }
+        newsList = [...res.response.docs];
         newsCount =
           newsList.length > maxDisplayCount ? maxDisplayCount : newsList.length;
         // parse the original news list
