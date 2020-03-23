@@ -160,13 +160,12 @@ function getNewsListFromNytApi() {
     .then(res => {
       newsList = [];
       if (res.response.docs.length > 0) {
-        // for (let i = 0; i < res.response.docs.length; i++) {
-        //   // just get the news which includes image
-        //   if (res.response.docs[i].multimedia.length > 0) {
-        //     newsList.push(res.response.docs[i]);
-        //   }
-        // }
-        newsList = [...res.response.docs];
+        for (let i = 0; i < res.response.docs.length; i++) {
+          // just get the news which includes image
+          if (res.response.docs[i].multimedia.length > 0) {
+            newsList.push(res.response.docs[i]);
+          }
+        }
         newsCount =
           newsList.length > maxDisplayCount ? maxDisplayCount : newsList.length;
         // parse the original news list
