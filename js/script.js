@@ -231,7 +231,7 @@ function parseNewsListFromNytApi(list) {
       originNews.lead_paragraph == null ? "" : originNews.lead_paragraph;
     if (content == "") {
       // if there is no content, then using abstract
-      originNews.abstract == null ? "" : originNews.abstract;
+      content = originNews.abstract == null ? "" : originNews.abstract;
     }
 
     // parse the source
