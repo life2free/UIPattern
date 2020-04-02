@@ -69,7 +69,7 @@ function getNewsListFromNewsApi() {
         for (let i = 0; i < res.articles.length; i++) {
           // just get the news which includes image
           let urlToImage = res.articles[i].urlToImage;
-          if (urlToImage != null && urlToImage != "") {
+          if (urlToImage !== null && urlToImage !== "") {
             newsList.push(res.articles[i]);
           }
         }
@@ -97,32 +97,32 @@ function parseNewsListFromNewsApi(list) {
     let originNews = list[i];
 
     // parse the title
-    let title = originNews.title == null ? "" : originNews.title;
+    let title = originNews.title === null ? "" : originNews.title;
 
     // parse the author
-    let author = originNews.author == null ? "" : originNews.author;
+    let author = originNews.author === null ? "" : originNews.author;
 
     // parse the published date
     let publishedDate =
-      originNews.publishedAt == null ? "" : originNews.publishedAt;
+      originNews.publishedAt === null ? "" : originNews.publishedAt;
     if (publishedDate.length >= 10) {
       // just get the date, no time
       publishedDate = publishedDate.slice(0, 10);
     }
 
     // parse the image's url
-    let image = originNews.urlToImage == null ? "" : originNews.urlToImage;
+    let image = originNews.urlToImage === null ? "" : originNews.urlToImage;
 
     // parse the content
-    let content = originNews.content == null ? "" : originNews.content;
-    if (content != "") {
+    let content = originNews.content === null ? "" : originNews.content;
+    if (content !== "") {
       // replace the "\r\n" to '<br/><br/>'
       content = content.replace(/\r\n/g, "<br/><br/>");
       // replace the last "[  ]" to ""
       let idxBegin = content.lastIndexOf("[");
-      if (idxBegin != -1) {
+      if (idxBegin !== -1) {
         let idxEnd = content.indexOf("]", idxBegin + 1);
-        if (idxEnd != -1) {
+        if (idxEnd !== -1) {
           let firstPart = content.substr(0, idxBegin);
           if (idxEnd < content.length - 1) {
             let lastPart = content.substr(idxEnd + 1);
@@ -135,18 +135,18 @@ function parseNewsListFromNewsApi(list) {
     } else {
       // if there is no content, then using description
       let description =
-        originNews.description == null ? "" : originNews.description;
+        originNews.description === null ? "" : originNews.description;
       content = description;
     }
 
     // parse the source
     let source = "";
-    if (originNews.source != null) {
-      source = originNews.source.name == null ? "" : originNews.source.name;
+    if (originNews.source !== null) {
+      source = originNews.source.name === null ? "" : originNews.source.name;
     }
 
     // parse the source url
-    let url = originNews.url == null ? "" : originNews.url;
+    let url = originNews.url === null ? "" : originNews.url;
     newsListParsed.push(
       new News(title, author, publishedDate, image, content, source, url)
     );
@@ -192,22 +192,22 @@ function parseNewsListFromNytApi(list) {
     // parse the title
     let headline = originNews.headline;
     let title = "";
-    if (headline != null) {
-      title = headline.main == null ? "" : headline.main;
-      if (title == "") {
-        title = headline.print_headline == null ? "" : headline.print_headline;
+    if (headline !== null) {
+      title = headline.main === null ? "" : headline.main;
+      if (title === "") {
+        title = headline.print_headline === null ? "" : headline.print_headline;
       }
     }
 
     // parse the author
     let byline = originNews.byline;
     let author = "";
-    if (byline != null) {
-      author = byline.original == null ? "" : byline.original;
+    if (byline !== null) {
+      author = byline.original === null ? "" : byline.original;
     }
 
     // parse the published date
-    let publishedDate = originNews.pub_date == null ? "" : originNews.pub_date;
+    let publishedDate = originNews.pub_date === null ? "" : originNews.pub_date;
     if (publishedDate.length >= 10) {
       // just get the date, no time
       publishedDate = publishedDate.slice(0, 10);
@@ -216,29 +216,29 @@ function parseNewsListFromNytApi(list) {
     // parse the image's url
     let multimedia = originNews.multimedia;
     let image = "";
-    if (multimedia != null && multimedia.length > 0) {
+    if (multimedia !== null && multimedia.length > 0) {
       let imageUrl = "";
       if (multimedia.length >= 2) {
-        imageUrl = multimedia[0].url == null ? "" : multimedia[0].url;
+        imageUrl = multimedia[0].url === null ? "" : multimedia[0].url;
       } else {
-        imageUrl = multimedia[0].url == null ? "" : multimedia[0].url;
+        imageUrl = multimedia[0].url === null ? "" : multimedia[0].url;
       }
       image = nytImageBasePath + imageUrl;
     }
 
     // parse the content
     let content =
-      originNews.lead_paragraph == null ? "" : originNews.lead_paragraph;
-    if (content == "") {
+      originNews.lead_paragraph === null ? "" : originNews.lead_paragraph;
+    if (content === "") {
       // if there is no content, then using abstract
-      content = originNews.abstract == null ? "" : originNews.abstract;
+      content = originNews.abstract === null ? "" : originNews.abstract;
     }
 
     // parse the source
-    let source = originNews.source == null ? "" : originNews.source;
+    let source = originNews.source === null ? "" : originNews.source;
 
     // parse the source url
-    let url = originNews.web_url == null ? "" : originNews.web_url;
+    let url = originNews.web_url === null ? "" : originNews.web_url;
     nytListParsed.push(
       new News(title, author, publishedDate, image, content, source, url)
     );
@@ -252,7 +252,7 @@ function renderNewsDiv(newsIdx) {
 
     // render the title,author,publishedDate,image,content,source,url to page
     newsTitleEle.innerHTML = news.title;
-    if (news.author != "") {
+    if (news.author !== "") {
       newsAuthorEle.innerHTML = news.author;
       // to filter out the a tag, some author infos from original data contains a tag
       newsAuthorEle.innerText = newsAuthorEle.innerText;
@@ -262,9 +262,9 @@ function renderNewsDiv(newsIdx) {
 
     newsPublishedDateEle.innerHTML = news.publishedDate;
 
-    if (news.url != "") {
+    if (news.url !== "") {
       newsSourceEle.innerHTML = "related link";
-      if (news.source != "") {
+      if (news.source !== "") {
         newsSourceEle.innerHTML = news.source;
       }
       newsSourceEle.href = news.url;
@@ -290,7 +290,7 @@ function goPreviousOrNextHandle(e) {
   e.preventDefault();
   let direct = e.target.dataset.direction;
 
-  if (direct == "-1") {
+  if (direct === "-1") {
     // go Previous
     newsIndex -= 1;
     if (newsIndex < 0) {
@@ -316,14 +316,16 @@ function displayData(e) {
   let apiIndex = e.target.dataset.apiindex;
   newsIndex = 0;
   let lastQueryTime =
-    e.target.dataset.querytime != "" ? parseInt(e.target.dataset.querytime) : 0;
+    e.target.dataset.querytime !== ""
+      ? parseInt(e.target.dataset.querytime)
+      : 0;
   let interval = new Date().getTime() - lastQueryTime;
   if (interval <= queryInterval) {
     /**
      * if the spacing interval between current time and last time when queried data is less than the queryInterval,
      * then don't need query data with api, just use the data last time queried
      */
-    if (apiIndex == "0") {
+    if (apiIndex === "0") {
       renderList = [...newsListParsed];
       queryNewsApiEle.classList.add("click_style");
       queryNytApiEle.classList.remove("click_style");
@@ -340,7 +342,7 @@ function displayData(e) {
      * if the spacing interval between current time and last time when queried data is great than the queryInterval,
      * then need query data with api
      */
-    if (apiIndex == "0") {
+    if (apiIndex === "0") {
       // get news list by News api
       getNewsListFromNewsApi();
       queryNewsApiEle.classList.add("click_style");
