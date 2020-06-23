@@ -41,3 +41,8 @@ The data from api are updated infrequently, meanwhile, the amount of data which 
 ### 4. Apply media queries
 
 Apply media queries to delivering a tailored style sheet (responsive web design).
+
+## Contribute
+
+- Source code: https://github.com/life2free/UIPattern
+- Issue Tracker: https://github.com/life2free/UIPattern/issues
