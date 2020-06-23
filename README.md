@@ -1,6 +1,6 @@
 # UI Pattern
 
-Build out user interfaces with HTML, javascript and CSS. The UI follows one UI Pattern, the data to populate the UI Pattern comes from the API.
+Build out user interfaces with HTML, javascript and CSS. The UI follows one UI Pattern, the data to populate the UI Pattern comes from public APIs.
 
 ## Requirements
 
